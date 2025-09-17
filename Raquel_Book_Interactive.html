@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Real Mermaids by Raquel Itzkowitz - Interactive Book</title>
+    <meta name="description" content="An interactive digital book experience featuring The Real Mermaids by Raquel Itzkowitz">
+    <meta name="author" content="Raquel Itzkowitz">
+    <meta name="keywords" content="interactive book, mermaids, children's story, digital book">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #c2e9fb 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .book-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4a4a4a;
+        }
+
+        .book-header h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .book-container {
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .book {
+            width: 900px;
+            height: 600px;
+            position: relative;
+            transform-style: preserve-3d;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .page {
+            width: 450px;
+            height: 600px;
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            cursor: pointer;
+            transition: transform 0.6s ease-in-out;
+            transform-origin: left center;
+            backface-visibility: hidden;
+        }
+
+        .page.left {
+            left: 0;
+        }
+
+        .page.right {
+            right: 0;
+        }
+
+        .page.flipped {
+            transform: rotateY(-180deg);
+        }
+
+        .cover-page {
+            background: linear-gradient(45deg, #ff6b9d, #9b59b6);
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .cover-title {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .cover-author {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .cover-age {
+            font-size: 1.3em;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 25px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .chapter-title {
+            font-size: 1.8em;
+            color: #9b59b6;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ff6b9d;
+            padding-bottom: 10px;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #e3f2fd, #f8bbd9);
+            border: 2px dashed #9b59b6;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+        }
+
+        .image-placeholder .camera-icon {
+            font-size: 3em;
+            color: #9b59b6;
+            margin-bottom: 10px;
+        }
+
+        .image-placeholder .upload-text {
+            color: #666;
+            font-size: 1.1em;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .picture-description {
+            background: #e8f4fd;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #4fc3f7;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .chapter-text {
+            flex-grow: 1;
+            line-height: 1.7;
+            font-size: 1.1em;
+            overflow-y: auto;
+        }
+
+        .chapter-text p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 15px;
+            right: 20px;
+            color: #999;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #9b59b6, #ff6b9d);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(155, 89, 182, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(155, 89, 182, 0.4);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .page-indicator {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            color: #666;
+            font-weight: bold;
+        }
+
+        .toc-page {
+            background: #f8e8ff;
+        }
+
+        .toc-title {
+            font-size: 2.2em;
+            color: #9b59b6;
+            text-align: center;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .toc-item {
+            padding: 12px 0;
+            border-bottom: 1px dotted #ccc;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .toc-item:hover {
+            background: rgba(155, 89, 182, 0.1);
+        }
+
+        .instructions {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .click-hint {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 20px;
+            border: 2px solid #ff6b9d;
+            color: #9b59b6;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: translateY(-50%) scale(1); }
+            50% { opacity: 1; transform: translateY(-50%) scale(1.05); }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* File input styling */
+        .file-input {
+            display: none;
+        }
+
+        @media (max-width: 1000px) {
+            .book {
+                width: 700px;
+                height: 500px;
+            }
+            .page {
+                width: 350px;
+                height: 500px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="book-header">
+        <h1>📖 The Real Mermaids - Interactive Digital Book</h1>
+        <p>Click pages to turn them • Upload pictures for each chapter</p>
+    </div>
+
+    <div class="book-container">
+        <div class="book" id="book">
+            <!-- Page 1: Cover -->
+            <div class="page left cover-page" id="page-1" onclick="nextPage()">
+                <div class="cover-title">The Real Mermaids</div>
+                <div class="cover-author">by Raquel Itzkowitz</div>
+                <div class="cover-age">Age 9</div>
+                <div style="margin-top: 30px; font-size: 1.3em;">🧜‍♀️ An Underwater Adventure 🧜‍♀️</div>
+                <div class="click-hint">Click to open →</div>
+                <div class="page-number">Cover</div>
+            </div>
+
+            <!-- Page 2: Table of Contents -->
+            <div class="page right toc-page hidden" id="page-2" onclick="nextPage()">
+                <div class="toc-title">Table of Contents</div>
+                <div class="toc-item" onclick="goToPage(3)"><span>Chapter 1: The Splash That Changed Everything</span><span>3</span></div>
+                <div class="toc-item" onclick="goToPage(5)"><span>Chapter 2: The Bubble Wall</span><span>5</span></div>
+                <div class="toc-item" onclick="goToPage(7)"><span>Chapter 3: The Vanishing of Mari</span><span>7</span></div>
+                <div class="toc-item" onclick="goToPage(9)"><span>Chapter 4: The Throne of Shadows</span><span>9</span></div>
+                <div class="toc-item" onclick="goToPage(11)"><span>Chapter 5: The Battle in the Throne Room</span><span>11</span></div>
+                <div class="toc-item" onclick="goToPage(13)"><span>Chapter 6: Mari vs. Galaxy</span><span>13</span></div>
+                <div class="page-number">2</div>
+            </div>
+
+            <!-- Page 3: Chapter 1 Part 1 -->
+            <div class="page left hidden" id="page-3" onclick="nextPage()">
+                <div class="chapter-title">Chapter 1: The Splash That Changed Everything</div>
+                
+                <div class="image-placeholder" onclick="uploadImage(1, event)">
+                    <div class="camera-icon">📷</div>
+                    <div class="upload-text">Click to Upload Picture</div>
+                    <input type="file" class="file-input" id="upload-1" accept="image/*" onchange="handleImageUpload(1, this)">
+                </div>
+                
+                <div class="picture-description">
+                    🎨 Picture Idea: Annabelle falling into magical underwater world with glowing blue legs, surrounded by colorful mermaids and a beautiful coral castle in the background
+                </div>
+                
+                <div class="chapter-text">
+                    <p>Annabelle was perfect. Smart. Neat. Always right. But there was one thing she never did: go in the water.</p>
+                    <p>When her mom planned a beach day, Annabelle chose the sand. "My bathing suit's too small," she said. She sat near the deeper part of the ocean with her bunny, Hopper—until Hopper kept nudging her forward.</p>
+                </div>
+                <div class="page-number">3</div>
+            </div>
+
+            <!-- Page 4: Chapter 1 Part 2 -->
+            <div class="page right hidden" id="page-4" onclick="nextPage()">
+                <div class="chapter-text">
+                    <p>She could still breathe. Swirls of color spun around her; her legs glowed light blue—the same as her skirt. When the spinning stopped, she was at the bottom of the ocean, surrounded by underwater people with colored legs matching their clothes.</p>
+                    
+                    <p>A trumpet sounded: "Make way for the Queen of the Mermaids!"</p>
+                    
+                    <p>The Queen explained: mermaids don't have tails—merfish do. Merfish are cruel and jealous. Annabelle and even Hopper were special: some humans and animals can breathe underwater. The Queen brought her to the coral castle and showed a picture of the murrefish—ugly, menacing creatures who wanted mermaid magic to destroy the earth.</p>
+                    
+                    <p>But first, the Queen said, enjoy the city. No time would pass above. She sent Annabelle crystal-bubble picking with the maids.</p>
+                    
+                    <p>At a great crystal wall, bubbles glowed like apple-sized moons. As Annabelle began carefully picking, a girl bumped into her.</p>
+                </div>
+                <div class="page-number">4</div>
+            </div>
+
+            <!-- Page 5: Chapter 2 -->
+            <div class="page left hidden" id="page-5" onclick="nextPage()">
+                <div class="chapter-title">Chapter 2: The Bubble Wall</div>
+                
+                <div class="image-placeholder" onclick="uploadImage(2, event)">
+                    <div class="camera-icon">📷</div>
+                    <div class="upload-text">Click to Upload Picture</div>
+                    <input type="file" class="file-input" id="upload-2" accept="image/*" onchange="handleImageUpload(2, this)">
+                </div>
+                
+                <div class="picture-description">
+                    🎨 Picture Idea: Crystal bubble wall with glowing moon-like bubbles, young mermaids picking bubbles, and a dramatic scene of Queen Nerissa with red gown and coral crown emerging from a dark portal
+                </div>
+                
+                <div class="chapter-text">
+                    <p>A beautiful mermaid swept down. Golden curls, blue eyes, a pearl-trim basket. "Move aside," she snapped. "I'm Rachel—the best bubble-picker. No one beats me, especially not clumsy Mari."</p>
+                    <p>Another girl appeared with straight red hair and gentle brown eyes. "Hello, Reena," Rachel said sweetly. Mari whispered, "Reena is nice inside, but she follows Rachel so she won't get bullied."</p>
+                </div>
+                <div class="page-number">5</div>
+            </div>
+
+            <!-- Page 6: More content -->
+            <div class="page right hidden" id="page-6" onclick="nextPage()">
+                <div class="chapter-text">
+                    <p style="text-align: center; font-size: 1.5em; color: #9b59b6; margin-top: 100px;">More chapters continue...</p>
+                    <p style="text-align: center; margin-top: 30px;">This is a preview showing how the interactive book works!</p>
+                    <p style="text-align: center; margin-top: 20px;">You can:</p>
+                    <ul style="margin-top: 20px; padding-left: 50px;">
+                        <li>Click pages to turn them</li>
+                        <li>Upload pictures for each chapter</li>
+                        <li>Navigate with buttons</li>
+                        <li>Jump to chapters from the table of contents</li>
+                    </ul>
+                </div>
+                <div class="page-number">6</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prev-btn" onclick="prevPage()" disabled>← Previous</button>
+        <div class="page-indicator" id="page-indicator">Page 1 of 6</div>
+        <button class="nav-btn" id="next-btn" onclick="nextPage()">Next →</button>
+    </div>
+
+    <div class="instructions">
+        <p>💡 <strong>Instructions:</strong> Click anywhere on a page to turn it, or use the Previous/Next buttons. Click the camera icons to upload Raquel's pictures!</p>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 6;
+
+        function showPage(pageNum) {
+            // Hide all pages
+            for (let i = 1; i <= totalPages; i++) {
+                document.getElementById(`page-${i}`).classList.add('hidden');
+            }
+            
+            // Show current page(s)
+            if (pageNum === 1) {
+                // Cover page only
+                document.getElementById('page-1').classList.remove('hidden');
+            } else if (pageNum % 2 === 0) {
+                // Even page - show left page
+                document.getElementById(`page-${pageNum}`).classList.remove('hidden');
+                if (pageNum + 1 <= totalPages) {
+                    document.getElementById(`page-${pageNum + 1}`).classList.remove('hidden');
+                }
+            } else {
+                // Odd page - show with previous even page if exists
+                if (pageNum - 1 >= 1) {
+                    document.getElementById(`page-${pageNum - 1}`).classList.remove('hidden');
+                }
+                document.getElementById(`page-${pageNum}`).classList.remove('hidden');
+            }
+            
+            updateNavigation();
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage);
+            }
+        }
+
+        function goToPage(pageNum) {
+            currentPage = pageNum;
+            showPage(currentPage);
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicator = document.getElementById('page-indicator');
+            
+            prevBtn.disabled = currentPage <= 1;
+            nextBtn.disabled = currentPage >= totalPages;
+            indicator.textContent = `Page ${currentPage} of ${totalPages}`;
+        }
+
+        function uploadImage(chapterNum, event) {
+            event.stopPropagation();
+            document.getElementById(`upload-${chapterNum}`).click();
+        }
+
+        function handleImageUpload(chapterNum, input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const placeholder = input.parentNode;
+                    placeholder.style.backgroundImage = `url(${e.target.result})`;
+                    placeholder.style.backgroundSize = 'cover';
+                    placeholder.style.backgroundPosition = 'center';
+                    placeholder.innerHTML = '<div style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.8); padding: 5px 10px; border-radius: 15px; font-size: 0.8em; color: #666;">✓ Picture uploaded</div>';
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                prevPage();
+            } else if (e.key === 'ArrowRight') {
+                nextPage();
+            }
+        });
+
+        // Initialize
+        showPage(1);
+    </script>
+</body>
+</html>

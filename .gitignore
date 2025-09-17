@@ -1,0 +1,52 @@
+# System files
+.DS_Store
+.X0-lock
+*.log
+*-cwd
+
+# Browser screenshots
+.browser_screenshots/
+
+# Cache and temporary files
+cache/
+.downloads/
+oh_editor_history_*/
+snap-private-tmp/
+systemd-private-*/
+openhands_port_locks/
+
+# Development files
+file_*
+server.log
+test_*
+*.tar.gz
+*.ogg
+*.jpg
+
+# VSCode
+.vscode/
+
+# Deployment files (keep only the main HTML)
+enhanced-kidsbook/
+kidsbook-deploy/
+repo-update/
+whatsapp-media/
+TheLittleMermaid/
+
+# Generated PDFs and reports (keep only the main interactive book)
+*.pdf
+ACCOMPLISHMENT_*
+BITZKOWITZ_*
+DEPLOYMENT_*
+EMAIL_*
+NEW_PROJECT_*
+SIMPLE_*
+download_page.html
+enhanced_kidsbook.html
+new_project_setup_guide.html
+
+# Scripts and tools (but keep README.md)
+*.sh
+vercel-deployment-monitor.js
+deployment-debugging-checklist.md
+project-bootstrap-guide.md
