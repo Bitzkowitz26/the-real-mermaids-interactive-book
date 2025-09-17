@@ -1,0 +1,60 @@
+# Vercel ignore file
+# Exclude unnecessary files from deployment
+
+# Development files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Cache directories
+cache/
+.cache/
+node_modules/
+
+# Temporary directories
+claude-*
+oh_editor_history_*/
+openhands_port_locks/
+systemd-private-*/
+snap-private-tmp/
+
+# Documentation and reports (keep only essential ones)
+*_REPORT.html
+*_REPORT.pdf
+*_REPORT.md
+ACCOMPLISHMENT_*.txt
+EMAIL_*.txt
+SIMPLE_*.txt
+*_GUIDE.pdf
+*_INSTRUCTIONS.md
+*_ANALYSIS.md
+*_SUMMARY.md
+*_CHECKLIST.md
+*_POSTMORTEM*.md
+deployment-*.md
+deployment-*.sh
+deployment-*.log
+deployment-*.js
+vercel-deployment-*.js
+project-bootstrap-*.sh
+project-bootstrap-*.md
+
+# Other projects and archives
+TheLittleMermaid/
+enhanced-kidsbook/
+enhanced-kidsbook-deployment.tar.gz
+kidsbook-*/
+repo-update/
+whatsapp-media/
+
+# Test files
+file_*
+test_*
+*.ogg
+chunkhound_*.log
+
+# Backup files
+*-backup.*
+*-old.*
+*.bak
