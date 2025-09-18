@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Underwriting Report - Email Sender</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .email-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 200px;
+            resize: vertical;
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .btn-gmail {
+            background: #dd4b39;
+        }
+        .btn-gmail:hover {
+            background: #c23321;
+        }
+        .btn-outlook {
+            background: #0078d4;
+        }
+        .btn-outlook:hover {
+            background: #106ebe;
+        }
+        .attachments {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .attachment-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .attachment-item:last-child {
+            border-bottom: none;
+        }
+        .file-info {
+            display: flex;
+            align-items: center;
+        }
+        .file-icon {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .file-size {
+            color: #666;
+            font-size: 12px;
+        }
+        .summary-box {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #2196f3;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        .instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .step {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid #28a745;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Real Estate Underwriting Report</h1>
+            <h2>3015 North Oakwood Avenue, Muncie, Indiana</h2>
+            <p>Professional Investment Analysis - Ready to Send</p>
+        </div>
+
+        <div class="summary-box">
+            <h3>📋 Analysis Summary</h3>
+            <p><strong>Property:</strong> 3015 North Oakwood Avenue, Muncie, IN 47304</p>
+            <p><strong>Analysis Date:</strong> September 18, 2025</p>
+            <p><strong>Recipient:</strong> Benitzkowitz@agenticforce.dev</p>
+            <p><strong>Recommendation:</strong> Multi-Family scenario shows strongest investment potential (9.9% Cap Rate, 13.9% Cash-on-Cash Return)</p>
+        </div>
+
+        <div class="attachments">
+            <h3>📎 Report Attachments</h3>
+            <div class="attachment-item">
+                <div class="file-info">
+                    <span class="file-icon">📄</span>
+                    <div>
+                        <strong>Professional Underwriting Report.pdf</strong>
+                        <div class="file-size">517 KB - Comprehensive 15-page analysis</div>
+                    </div>
+                </div>
+                <span>✅</span>
+            </div>
+            <div class="attachment-item">
+                <div class="file-info">
+                    <span class="file-icon">📊</span>
+                    <div>
+                        <strong>Financial Analysis Spreadsheet.xlsx</strong>
+                        <div class="file-size">12 KB - 10-year pro forma models</div>
+                    </div>
+                </div>
+                <span>✅</span>
+            </div>
+            <div class="attachment-item">
+                <div class="file-info">
+                    <span class="file-icon">📈</span>
+                    <div>
+                        <strong>Investment Comparison Charts.png</strong>
+                        <div class="file-size">381 KB - Visual analysis summary</div>
+                    </div>
+                </div>
+                <span>✅</span>
+            </div>
+        </div>
+
+        <div class="email-form">
+            <h3>📧 Email Composition</h3>
+            
+            <div class="form-group">
+                <label for="recipient">To:</label>
+                <input type="email" id="recipient" value="Bitzkowitz@agenticforce.dev" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" value="Professional Real Estate Underwriting Report - 3015 N Oakwood Ave, Muncie, IN" readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="email-body">Email Body:</label>
+                <textarea id="email-body" readonly>Dear Investor,
+
+Please find attached the comprehensive real estate underwriting report for:
+
+Property: 3015 North Oakwood Avenue, Muncie, Indiana 47304
+Analysis Date: September 18, 2025
+
+EXECUTIVE SUMMARY:
+This professional analysis evaluates three potential investment scenarios for the subject property. Based on current market conditions and financial modeling, the Multi-Family configuration presents the strongest investment opportunity with:
+
+• Cap Rate: 9.9%
+• Cash-on-Cash Return: 13.9%
+• Year 1 Cash Flow: $5,435
+• Investment Grade: STRONG
+
+ATTACHMENTS INCLUDED:
+1. Professional Underwriting Report (PDF) - Comprehensive 15-page analysis
+2. Financial Analysis Spreadsheet (Excel) - Detailed 10-year pro formas
+3. Investment Comparison Charts (PNG) - Visual analysis summary
+
+KEY RECOMMENDATIONS:
+• Multi-Family scenario shows superior investment potential
+• Duplex scenario meets minimum investment thresholds
+• Single Family rental requires significant price negotiation
+• Focus on Ball State University proximity for stable rental demand
+• Conduct thorough due diligence before proceeding
+
+NEXT STEPS:
+1. Review attached analysis in detail
+2. Verify actual property configuration and condition
+3. Conduct on-site property inspection
+4. Negotiate purchase terms based on findings
+5. Secure appropriate financing
+
+This analysis is based on market research and industry-standard underwriting practices. Please consult with local real estate professionals and conduct thorough due diligence before making any investment decisions.
+
+Best regards,
+Professional Real Estate Analysis Team
+
+DISCLAIMER: This analysis is for informational purposes only and does not constitute investment advice. Past performance does not guarantee future results.</textarea>
+            </div>
+        </div>
+
+        <div class="highlight">
+            <h3>⚠️ Important Note</h3>
+            <p>The files are ready for email attachment. Since I cannot directly send emails, please use one of the methods below to send the report with all attachments.</p>
+        </div>
+
+        <div class="instructions">
+            <h3>📬 How to Send the Email</h3>
+            
+            <div class="step">
+                <h4>Method 1: Gmail (Recommended)</h4>
+                <button class="btn btn-gmail" onclick="openGmail()">📧 Open Gmail</button>
+                <p>1. Click the Gmail button above<br>
+                2. Copy the email content from the text area<br>
+                3. Attach the three files from your downloads<br>
+                4. Send the email</p>
+            </div>
+
+            <div class="step">
+                <h4>Method 2: Outlook</h4>
+                <button class="btn btn-outlook" onclick="openOutlook()">📧 Open Outlook</button>
+                <p>1. Click the Outlook button above<br>
+                2. Copy the email content from the text area<br>
+                3. Attach the three files<br>
+                4. Send the email</p>
+            </div>
+
+            <div class="step">
+                <h4>Method 3: Download Files First</h4>
+                <button class="btn" onclick="showDownloadLinks()">📥 Show Download Links</button>
+                <div id="download-links" style="display: none; margin-top: 10px;">
+                    <p>Right-click and "Save As" each file:</p>
+                    <ul>
+                        <li><a href="/view?path=/workspace/Real_Estate_Underwriting_Report_3015_N_Oakwood.pdf" target="_blank">📄 Professional Report (PDF)</a></li>
+                        <li><a href="/view?path=/workspace/Real_Estate_Analysis_3015_N_Oakwood.xlsx" target="_blank">📊 Financial Analysis (Excel)</a></li>
+                        <li><a href="/view?path=/workspace/investment_analysis_charts.png" target="_blank">📈 Investment Charts (PNG)</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary-box">
+            <h3>✅ Report Completion Summary</h3>
+            <ul>
+                <li>✅ Comprehensive market analysis completed</li>
+                <li>✅ Three investment scenarios analyzed</li>
+                <li>✅ 10-year financial projections created</li>
+                <li>✅ Professional PDF report generated (15 pages)</li>
+                <li>✅ Excel financial model with pro formas</li>
+                <li>✅ Investment comparison charts created</li>
+                <li>✅ Risk analysis and recommendations provided</li>
+                <li>✅ Due diligence checklist included</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function openGmail() {
+            const recipient = document.getElementById('recipient').value;
+            const subject = encodeURIComponent(document.getElementById('subject').value);
+            const body = encodeURIComponent(document.getElementById('email-body').value);
+            
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${subject}&body=${body}`;
+            window.open(gmailUrl, '_blank');
+        }
+
+        function openOutlook() {
+            const recipient = document.getElementById('recipient').value;
+            const subject = encodeURIComponent(document.getElementById('subject').value);
+            const body = encodeURIComponent(document.getElementById('email-body').value);
+            
+            const outlookUrl = `https://outlook.live.com/mail/0/deeplink/compose?to=${recipient}&subject=${subject}&body=${body}`;
+            window.open(outlookUrl, '_blank');
+        }
+
+        function showDownloadLinks() {
+            const links = document.getElementById('download-links');
+            links.style.display = links.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function copyEmailContent() {
+            const emailBody = document.getElementById('email-body');
+            emailBody.select();
+            document.execCommand('copy');
+            alert('Email content copied to clipboard!');
+        }
+    </script>
+</body>
+</html>

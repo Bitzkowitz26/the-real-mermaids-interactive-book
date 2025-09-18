@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate Report - Email Composition</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .email-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #dee2e6;
+        }
+        .email-field {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .field-label {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        .field-value {
+            font-family: monospace;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 3px;
+            word-break: break-all;
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .btn-outlook {
+            background: #0078d4;
+        }
+        .btn-outlook:hover {
+            background: #106ebe;
+        }
+        .btn-copy {
+            background: #28a745;
+        }
+        .btn-copy:hover {
+            background: #218838;
+        }
+        .attachments-info {
+            background: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .security-note {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .step {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid #28a745;
+        }
+        .file-list {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        .copy-success {
+            background: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Real Estate Underwriting Report</h1>
+            <h2>3015 North Oakwood Avenue, Muncie, Indiana</h2>
+            <p>Ready to Send to: <strong>Bitzkowitz@agenticforce.dev</strong></p>
+        </div>
+
+        <div class="security-note">
+            <h3>🔒 Security Notice</h3>
+            <p>For security reasons, I cannot directly access email accounts. Please follow the instructions below to send the email manually using your Outlook account.</p>
+        </div>
+
+        <div class="email-preview">
+            <h3>📧 Email Composition Preview</h3>
+            
+            <div class="email-field">
+                <div class="field-label">To:</div>
+                <div class="field-value" id="email-to">Bitzkowitz@agenticforce.dev</div>
+                <button class="btn btn-copy" onclick="copyToClipboard('email-to')">Copy</button>
+            </div>
+
+            <div class="email-field">
+                <div class="field-label">Subject:</div>
+                <div class="field-value" id="email-subject">Professional Real Estate Underwriting Report - 3015 N Oakwood Ave, Muncie, IN</div>
+                <button class="btn btn-copy" onclick="copyToClipboard('email-subject')">Copy</button>
+            </div>
+
+            <div class="email-field">
+                <div class="field-label">Email Body:</div>
+                <div class="field-value" id="email-body" style="white-space: pre-wrap; max-height: 300px; overflow-y: auto;">Dear Investor,
+
+Please find attached the comprehensive real estate underwriting report for:
+
+Property: 3015 North Oakwood Avenue, Muncie, Indiana 47304
+Analysis Date: September 18, 2025
+
+EXECUTIVE SUMMARY:
+This professional analysis evaluates three potential investment scenarios for the subject property. Based on current market conditions and financial modeling, the Multi-Family configuration presents the strongest investment opportunity with:
+
+• Cap Rate: 9.9%
+• Cash-on-Cash Return: 13.9%
+• Year 1 Cash Flow: $5,435
+• Investment Grade: STRONG
+
+ATTACHMENTS INCLUDED:
+1. Professional Underwriting Report (PDF) - Comprehensive 15-page analysis
+2. Financial Analysis Spreadsheet (Excel) - Detailed 10-year pro formas
+3. Investment Comparison Charts (PNG) - Visual analysis summary
+
+KEY RECOMMENDATIONS:
+• Multi-Family scenario shows superior investment potential
+• Duplex scenario meets minimum investment thresholds
+• Single Family rental requires significant price negotiation
+• Focus on Ball State University proximity for stable rental demand
+• Conduct thorough due diligence before proceeding
+
+NEXT STEPS:
+1. Review attached analysis in detail
+2. Verify actual property configuration and condition
+3. Conduct on-site property inspection
+4. Negotiate purchase terms based on findings
+5. Secure appropriate financing
+
+This analysis is based on market research and industry-standard underwriting practices. Please consult with local real estate professionals and conduct thorough due diligence before making any investment decisions.
+
+Best regards,
+Professional Real Estate Analysis Team
+
+DISCLAIMER: This analysis is for informational purposes only and does not constitute investment advice. Past performance does not guarantee future results.</div>
+                <button class="btn btn-copy" onclick="copyToClipboard('email-body')">Copy Email Body</button>
+            </div>
+
+            <div class="copy-success" id="copy-success">
+                ✅ Copied to clipboard!
+            </div>
+        </div>
+
+        <div class="attachments-info">
+            <h3>📎 Files to Attach</h3>
+            <div class="file-list">
+                <div class="file-item">
+                    <div>
+                        <strong>📄 Professional Underwriting Report.pdf</strong>
+                        <div style="font-size: 12px; color: #666;">517 KB - Comprehensive 15-page analysis</div>
+                    </div>
+                    <span style="color: green;">✅ Ready</span>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <strong>📊 Financial Analysis Spreadsheet.xlsx</strong>
+                        <div style="font-size: 12px; color: #666;">12 KB - 10-year pro forma models</div>
+                    </div>
+                    <span style="color: green;">✅ Ready</span>
+                </div>
+                <div class="file-item">
+                    <div>
+                        <strong>📈 Investment Comparison Charts.png</strong>
+                        <div style="font-size: 12px; color: #666;">381 KB - Visual analysis summary</div>
+                    </div>
+                    <span style="color: green;">✅ Ready</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📬 How to Send the Email</h3>
+            
+            <div class="step">
+                <h4>Step 1: Open Outlook</h4>
+                <a href="https://outlook.live.com/mail/0/deeplink/compose?to=Bitzkowitz@agenticforce.dev&subject=Professional%20Real%20Estate%20Underwriting%20Report%20-%203015%20N%20Oakwood%20Ave%2C%20Muncie%2C%20IN" 
+                   target="_blank" class="btn btn-outlook">🌐 Open Outlook Web</a>
+                <p>Click the button above to open Outlook in a new tab with the recipient pre-filled.</p>
+            </div>
+
+            <div class="step">
+                <h4>Step 2: Copy Email Content</h4>
+                <button class="btn btn-copy" onclick="copyAllEmailContent()">📋 Copy All Email Content</button>
+                <p>Click to copy the subject and body text, then paste into your Outlook compose window.</p>
+            </div>
+
+            <div class="step">
+                <h4>Step 3: Download and Attach Files</h4>
+                <p>You'll need to download these files first, then attach them to your email:</p>
+                <div style="margin: 10px 0;">
+                    <a href="http://localhost:50374/Real_Estate_Underwriting_Report_3015_N_Oakwood.pdf" 
+                       download="Professional_Underwriting_Report.pdf" class="btn">📄 Download PDF Report</a>
+                </div>
+                <div style="margin: 10px 0;">
+                    <a href="http://localhost:50374/Real_Estate_Analysis_3015_N_Oakwood.xlsx" 
+                       download="Financial_Analysis_Spreadsheet.xlsx" class="btn">📊 Download Excel File</a>
+                </div>
+                <div style="margin: 10px 0;">
+                    <a href="http://localhost:50374/investment_analysis_charts.png" 
+                       download="Investment_Charts.png" class="btn">📈 Download Charts</a>
+                </div>
+            </div>
+
+            <div class="step">
+                <h4>Step 4: Send Email</h4>
+                <p>1. Paste the copied content into Outlook<br>
+                2. Attach the three downloaded files<br>
+                3. Review and send the email</p>
+            </div>
+        </div>
+
+        <div class="attachments-info">
+            <h3>✅ Report Summary</h3>
+            <ul>
+                <li><strong>Property Analysis:</strong> 3 investment scenarios evaluated</li>
+                <li><strong>Recommendation:</strong> Multi-Family configuration (9.9% Cap Rate)</li>
+                <li><strong>Financial Model:</strong> 10-year pro forma projections</li>
+                <li><strong>Market Analysis:</strong> Muncie, IN rental market assessment</li>
+                <li><strong>Risk Assessment:</strong> Comprehensive due diligence checklist</li>
+                <li><strong>Total Package:</strong> 3 files, ~910 KB total</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+                showCopySuccess();
+            }).catch(function(err) {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showCopySuccess();
+            });
+        }
+
+        function copyAllEmailContent() {
+            const subject = document.getElementById('email-subject').textContent;
+            const body = document.getElementById('email-body').textContent;
+            const fullContent = `Subject: ${subject}\n\n${body}`;
+            
+            navigator.clipboard.writeText(fullContent).then(function() {
+                showCopySuccess();
+            }).catch(function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        function showCopySuccess() {
+            const successDiv = document.getElementById('copy-success');
+            successDiv.style.display = 'block';
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        // Auto-open Outlook when page loads
+        window.addEventListener('load', function() {
+            console.log('Email composition interface ready');
+        });
+    </script>
+</body>
+</html>
