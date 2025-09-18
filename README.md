@@ -31,9 +31,21 @@ Follow the enchanting tale of "The Real Mermaids" as it unfolds through interact
 - **Responsive Layout** - Adapts to any screen size
 - **Cross-browser Compatible** - Works in all modern browsers
 
+## 🌐 Live Demo
+
+- **🚀 Production Site**: [kidsbook.dev](https://kidsbook.dev)
+- **📖 GitHub Pages**: [View Live Book](https://bitzkowitz26.github.io/the-real-mermaids-interactive-book/)
+- **📂 Repository**: [GitHub Repository](https://github.com/Bitzkowitz26/the-real-mermaids-interactive-book)
+
 ## 🎯 Usage
 
-Simply open `Raquel_Book_Interactive.html` in any web browser to start reading!
+**Online**: Visit [kidsbook.dev](https://kidsbook.dev) to read the interactive book instantly!
+
+**Local**: Simply open `Raquel_Book_Interactive.html` in any web browser to start reading!
+
+## 🚀 Deployment
+
+This project is configured for easy deployment to Vercel with custom domain support. See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed instructions.
 
 ## 👨‍💻 Author
 
@@ -41,4 +53,4 @@ Created with ❤️ for Raquel Itzkowitz
 
 ---
 
-*Experience the magic of interactive storytelling!* ✨
+*Experience the magic of interactive storytelling at [kidsbook.dev](https://kidsbook.dev)!* ✨
