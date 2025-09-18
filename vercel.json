@@ -2,26 +2,6 @@
   "version": 2,
   "name": "the-real-mermaids-interactive-book",
   "alias": ["kidsbook.dev", "www.kidsbook.dev"],
-  "builds": [
-    {
-      "src": "**/*.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/book",
-      "dest": "/Raquel_Book_Interactive.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -46,6 +26,11 @@
     }
   ],
   "redirects": [
+    {
+      "source": "/book",
+      "destination": "/Raquel_Book_Interactive.html",
+      "permanent": false
+    },
     {
       "source": "/mermaids",
       "destination": "/Raquel_Book_Interactive.html",
